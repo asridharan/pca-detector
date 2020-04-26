@@ -1,0 +1,20 @@
+version: '3.0'
+services:
+  jupyter:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: ubuntu-18.04:jupyter
+    ports:
+      - "9145:9145"
+    command: 
+      - "jupyter"
+      - "notebook"
+      - "--allow-root"
+      - "--ip=jupyter"
+      - "--port=9145"
+      - "--debug"
+  test:
+    image: ubuntu-18.04:jupyter
+    environment:
+      "JUPYTER_IP": ${HOSTNAME}
