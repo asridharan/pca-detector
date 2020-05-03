@@ -5,6 +5,8 @@ services:
       context: .
       dockerfile: ./Dockerfile
     image: ubuntu-18.04:jupyter
+    volumes:
+      - .:/usr/pca-detectors/
     ports:
       - "9145:9145"
     command: 
